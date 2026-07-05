@@ -1,0 +1,349 @@
+---
+import LandingLayout from '@/layouts/LandingLayout.astro';
+import { Hero } from '@/components/hero';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Badge from '@/components/ui/data-display/Badge/Badge.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import CTA from '@/components/landing/CTA.astro';
+import logomark from '@/assets/branding/logomark.png';
+
+const heroStats = [
+  { value: '17', label: 'Years of media leadership' },
+  { value: '$2.5M+', label: 'Digital spend managed' },
+  { value: '1B+', label: 'Monthly impressions driven' },
+];
+
+const pillars = [
+  {
+    icon: 'shield',
+    title: 'Radical Transparency & Data Sovereignty',
+    body: '"Your data, your accounts, your growth." You retain 100% ownership of your ad managers from day one.',
+  },
+  {
+    icon: 'check-circle',
+    title: 'Straight-Forward Capital Integrity',
+    body: 'Clean, straightforward pricing with zero hidden fees, so you always know exactly where your investment is going.',
+  },
+  {
+    icon: 'settings',
+    title: 'Process-Driven, Veteran Execution',
+    body: 'Every campaign follows a rigorous, battle-tested blueprint developed over 17 years to guarantee flawless delivery.',
+  },
+  {
+    icon: 'zap',
+    title: 'Pragmatic Innovation',
+    body: 'We deploy technology and AI with purpose — specifically to enhance efficiency and drive real, measurable results.',
+  },
+];
+
+const capabilities = [
+  {
+    number: '01',
+    icon: 'layout',
+    title: 'Paid Media Strategy & Planning',
+    body: 'Omnichannel budget allocation, precise audience mapping, and advanced financial modeling built strictly on historical data and live market benchmarks.',
+  },
+  {
+    number: '02',
+    icon: 'trending-up',
+    title: 'Paid Media Buying & Execution',
+    body: 'Precision, systemized campaign deployment across major digital networks, including Meta, Reddit, LinkedIn and Google ad suites.',
+  },
+  {
+    number: '03',
+    icon: 'palette',
+    title: 'Paid Media Creative Management',
+    body: 'Development and iterative optimization of high-converting visual and textual creative assets tailored to platform algorithms.',
+  },
+  {
+    number: '04',
+    icon: 'users',
+    title: 'Fractional CMO Consulting',
+    body: 'Senior executive alignment, cross-agency collaboration, marketing architecture design, and holistic growth ecosystem oversight.',
+  },
+];
+
+const clientLogos = [
+  'Walmart', 'Star Wars', 'Disney', 'envoy', 'Spotify', 'Hatchimals', 'Licor 43', 'Downtown Dallas Inc',
+];
+
+const trackRecord = [
+  {
+    icon: 'users',
+    channel: 'High-Conversion Paid Social',
+    context: 'Licor 43 — global paid social & domestic strategy',
+    stats: [
+      { value: '13M+', label: 'Users reached via precision digital ad placement' },
+      { value: '25M', label: 'Combined organic + amplified market impressions' },
+      { value: '400K+', label: 'Documented consumer engagements' },
+    ],
+  },
+  {
+    icon: 'search',
+    channel: 'Data-Driven Paid Search (PPC)',
+    context: 'Enterprise scale allocation across active ad accounts',
+    stats: [
+      { value: '$2.5M+', label: 'Active digital media spend deployed & scaled' },
+      { value: 'LTV-first', label: 'Prioritized lifetime value over short-term ROAS' },
+      { value: 'Compressed', label: 'Average CPC reduced across scaling windows' },
+    ],
+  },
+  {
+    icon: 'monitor',
+    channel: 'Programmatic & Connected TV',
+    context: 'Global release strategy for a major motion picture soundtrack',
+    stats: [
+      { value: '1.63M+', label: 'Aggregate programmatic impressions' },
+      { value: '97.7%', label: 'Video completion rate on unskippable CTV' },
+      { value: '85%', label: 'Above industry CTR benchmark' },
+    ],
+  },
+  {
+    icon: 'map-pin',
+    channel: 'Out-of-Home (OOH)',
+    context: 'Envoy Air / American Airlines Group — nationwide activation',
+    stats: [
+      { value: '30+', label: 'Key U.S. markets activated' },
+      { value: '55,000+', label: 'Active screens secured' },
+      { value: '1B+', label: 'Monthly impressions generated' },
+    ],
+  },
+];
+
+const process = [
+  {
+    icon: 'phone',
+    title: 'The Alignment Call',
+    body: 'A 30–45 minute deep dive to verify your market targets, review budget benchmarks, and ensure a perfect strategic fit.',
+  },
+  {
+    icon: 'layers',
+    title: 'The Rigorous Onboarding Phase',
+    body: 'A deep, systemized process so your team knows exactly what is happening at every milestone — ensuring nobody is left behind.',
+  },
+  {
+    icon: 'trending-up',
+    title: 'The Systemized Launch',
+    body: 'Deploying your custom media frameworks with 100% account sovereignty, daily tracking visibility, and plain-language execution.',
+  },
+];
+---
+
+<LandingLayout
+  title="Murry Street Media — Paid Media & Fractional CMO Consulting"
+  description="Fractional CMO consulting and paid media engineered for enterprise-level transparency, accountability, and growth."
+  includeOrgSchema
+>
+  <Hero layout="split" size="lg" showGrid blobPosition="right" class="bg-gradient-to-b from-brand-50 to-background">
+    <span
+      slot="badge"
+      class="inline-flex items-center rounded-full bg-gray-950 px-4 py-1.5 text-xs font-bold tracking-wider text-white uppercase"
+    >
+      Efficient. Effective. Executed.
+    </span>
+
+    <h1 slot="title">
+      Digital marketing engineered for <span class="text-brand-600">operational maturity</span>.
+    </h1>
+
+    <p slot="description">
+      If you are exhausted by agency hype machines, black-box reporting, and salespeople pitching "magic AI bullets," you need a partner who treats your budget with absolute transparency, straightforward pricing, and veteran-led execution.
+    </p>
+
+    <Fragment slot="actions">
+      <Button size="lg" href="/contact">
+        Schedule Your Discovery Call
+      </Button>
+      <Button size="lg" variant="outline" href="#approach">
+        How We Work
+      </Button>
+    </Fragment>
+
+    <div slot="aside" class="relative overflow-hidden rounded-2xl bg-[var(--obsidian)] p-8 shadow-xl md:p-10">
+      <div class="street-pattern pointer-events-none absolute inset-0 bg-white/[0.04]" aria-hidden="true" />
+      <img src={logomark.src} alt="" class="relative h-20 w-auto md:h-24" aria-hidden="true" />
+      <p class="relative mt-6 max-w-sm text-lg font-semibold leading-snug text-white">
+        Built from 17 years of enterprise media leadership — before Murry Street Media had a name.
+      </p>
+      <div class="relative mt-8 grid grid-cols-3 gap-4 border-t border-white/15 pt-6">
+        {heroStats.map((stat) => (
+          <div>
+            <div class="font-display text-brand-500 text-2xl font-bold">{stat.value}</div>
+            <div class="mt-1 text-xs leading-snug text-gray-300">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Hero>
+
+  {/* ================= Partner-First Approach ================= */}
+  <section id="approach" class="mx-auto max-w-6xl px-6 py-[var(--space-section)]">
+    <div class="mx-auto max-w-3xl text-center">
+      <Badge variant="brand" pill class="mx-auto">Our Partner-First Approach</Badge>
+      <h2 class="font-display mt-[var(--space-heading-gap)] text-3xl font-bold text-balance md:text-4xl">
+        The Murry Street Model
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-foreground-muted">
+        We built our scalable operational infrastructure to give your brand the sophisticated, process-driven media execution it deserves — trust and a commitment to your bottom line, from day one.
+      </p>
+    </div>
+
+    <div class="mt-[var(--space-section-header)] grid gap-6 md:grid-cols-2">
+      {pillars.map((pillar) => (
+        <Card variant="default" padding="lg" class="flex gap-4">
+          <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-500/15 text-gray-950">
+            <Icon name={pillar.icon} size="md" />
+          </div>
+          <div>
+            <h3 class="font-display text-lg font-bold text-foreground">{pillar.title}</h3>
+            <p class="mt-2 text-foreground-muted leading-relaxed">{pillar.body}</p>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </section>
+
+  {/* ================= Core Capabilities ================= */}
+  <section id="services" class="bg-background-secondary py-[var(--space-section)]">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="mx-auto max-w-3xl text-center">
+        <Badge pill class="mx-auto">Enterprise-Grade Infrastructure</Badge>
+        <h2 class="font-display mt-[var(--space-heading-gap)] text-3xl font-bold text-balance md:text-4xl">
+          Paid media strategy, execution & fractional CMO consulting
+        </h2>
+      </div>
+
+      <div class="mt-[var(--space-section-header)] grid gap-6 md:grid-cols-2">
+        {capabilities.map((cap) => (
+          <div class="rounded-[var(--theme-radius-lg)] border border-border bg-card p-8">
+            <div class="flex items-center gap-3">
+              <span class="font-display text-2xl font-bold text-brand-600">{cap.number}</span>
+              <Icon name={cap.icon} size="md" class="text-foreground-muted" />
+            </div>
+            <h3 class="font-display mt-4 text-xl font-bold text-foreground">{cap.title}</h3>
+            <p class="mt-2 leading-relaxed text-foreground-muted">{cap.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ================= 17 Years of Media Maturity (client history) ================= */}
+  <section class="mx-auto max-w-6xl px-6 py-[var(--space-section)] text-center">
+    <Badge pill class="mx-auto">17 Years of Media Maturity</Badge>
+    <h2 class="font-display mx-auto mt-[var(--space-heading-gap)] max-w-2xl text-3xl font-bold text-balance md:text-4xl">
+      Murry Street Media is new. Our operational blueprints are nearly two decades in the making.
+    </h2>
+    <p class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-foreground-muted">
+      Our founder has directed holistic digital frameworks, grass-roots activations, and omnichannel social and programmatic media for some of the world's most recognizable organizations. We bring that exact same enterprise-level strategic rigor directly to you.
+    </p>
+
+    <div class="mt-[var(--space-section-header)] flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+      {clientLogos.map((name) => (
+        <span class="font-display text-lg font-bold uppercase tracking-wide text-foreground-subtle">
+          {name}
+        </span>
+      ))}
+    </div>
+
+    <p class="mx-auto mt-8 max-w-2xl text-xs text-foreground-subtle">
+      * Select client history reflects the historical corporate portfolio directed, built, and executed by our Principal Strategist prior to the formal establishment of Murry Street Media LLC.
+    </p>
+  </section>
+
+  {/* ================= Track Record ================= */}
+  <section id="track-record" class="invert-section bg-background py-[var(--space-section)]">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="mx-auto max-w-3xl text-center">
+        <Badge variant="brand" pill class="mx-auto">The Track Record</Badge>
+        <h2 class="font-display mt-[var(--space-heading-gap)] text-3xl font-bold text-balance md:text-4xl">
+          Our blueprint in action
+        </h2>
+      </div>
+
+      <div class="mt-[var(--space-section-header)] grid gap-6 md:grid-cols-2">
+        {trackRecord.map((row) => (
+          <div class="relative overflow-hidden rounded-[var(--theme-radius-lg)] border border-border-invert bg-surface-invert-secondary p-8">
+            <div class="street-pattern pointer-events-none absolute inset-0 bg-on-invert/[0.03]" aria-hidden="true" />
+            <div class="relative flex items-center gap-3">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-500 text-gray-950">
+                <Icon name={row.icon} size="sm" />
+              </div>
+              <h3 class="font-display text-lg font-bold text-on-invert">{row.channel}</h3>
+            </div>
+            <p class="relative mt-2 text-sm text-on-invert-muted">{row.context}</p>
+
+            <div class="relative mt-6 grid grid-cols-3 gap-4 border-t border-border-invert pt-6">
+              {row.stats.map((stat) => (
+                <div>
+                  <div class="font-display text-xl font-bold text-brand-500 md:text-2xl">{stat.value}</div>
+                  <div class="mt-1 text-xs leading-snug text-on-invert-muted">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p class="mx-auto mt-8 max-w-2xl text-center text-xs text-on-invert-muted">
+        Select client history and performance data reflect the historical professional track record and operational frameworks executed directly by our Principal Strategist prior to the formal establishment of Murry Street Media LLC. All metrics are fully accurate and verified.
+      </p>
+    </div>
+  </section>
+
+  {/* ================= Origin Story ================= */}
+  <section id="story" class="mx-auto max-w-4xl px-6 py-[var(--space-section)]">
+    <div class="text-center">
+      <Badge pill class="mx-auto">Our Origin Story</Badge>
+      <h2 class="font-display mt-[var(--space-heading-gap)] text-3xl font-bold text-balance md:text-4xl">
+        Building something worth looking at
+      </h2>
+    </div>
+
+    <div class="mt-[var(--space-section-header)] space-y-5 text-lg leading-relaxed text-foreground-secondary">
+      <p>
+        Every great media company needs an origin story. Ours involves a supportive family, a 10-year-old entrepreneur, and a city street sign that couldn't decide how it was spelled. One end of our founder's childhood street was spelled Murray, the other Murry; she picked the shorter one, and it stuck.
+      </p>
+      <p>
+        At age ten, Murry Street Media's first official venture was born: manufacturing custom bulletin boards. Launching that first business taught us a permanent lesson —
+      </p>
+      <blockquote class="border-l-4 border-brand-500 py-1 pl-6 text-2xl font-bold text-foreground text-balance">
+        If you want to get noticed, you have to build something worth looking at.
+      </blockquote>
+      <p>
+        Today, we've traded the craft booths for cutting-edge media strategy, but that same childhood grit, creative spark, and teamwork drives everything we do.
+      </p>
+    </div>
+  </section>
+
+  {/* ================= Process ================= */}
+  <section class="bg-background-secondary py-[var(--space-section)]">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="mx-auto max-w-3xl text-center">
+        <Badge pill class="mx-auto">A Streamlined Path to Growth</Badge>
+        <h2 class="font-display mt-[var(--space-heading-gap)] text-3xl font-bold text-balance md:text-4xl">
+          Our structured activation process ensures a flawless launch
+        </h2>
+        <p class="mt-4 text-lg leading-relaxed text-foreground-muted">
+          Ready to partner with a veteran-guided media consultancy that treats your advertising budget with absolute operational integrity?
+        </p>
+      </div>
+
+      <div class="mt-[var(--space-section-header)] grid gap-6 md:grid-cols-3">
+        {process.map((step, i) => (
+          <div class="relative rounded-[var(--theme-radius-lg)] border border-border bg-card p-8">
+            <span class="font-display text-brand-500 text-sm font-bold tracking-widest">STEP {i + 1}</span>
+            <div class="mt-4 flex h-11 w-11 items-center justify-center rounded-lg bg-secondary text-foreground">
+              <Icon name={step.icon} size="md" />
+            </div>
+            <h3 class="font-display mt-4 text-lg font-bold text-foreground">{step.title}</h3>
+            <p class="mt-2 leading-relaxed text-foreground-muted">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+</LandingLayout>

@@ -1,0 +1,44 @@
+---
+import CTASection from '@/components/ui/marketing/CTA/CTA.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Logo from '@/components/ui/marketing/Logo/Logo.astro';
+import siteConfig from '@/config/site.config';
+---
+
+<CTASection id="contact" variant="brand" size="xl" maxWidth="lg">
+  <Logo slot="logo" size="xl" class="mx-auto justify-center" />
+
+  <h2 slot="heading">
+    Build paid media with accountability and transparency.
+  </h2>
+
+  <p slot="description">
+    Get a Fractional CMO partner who runs your advertising architecture with the same operational rigor used for enterprise media programs — straight-forward pricing, 100% account ownership, plain-language reporting.
+  </p>
+
+  <Fragment slot="actions">
+    <Button size="lg" variant="primary" class="bg-gray-950 text-white hover:bg-gray-800" href="/contact">
+      Schedule Your Alignment Call
+    </Button>
+    <Button size="lg" variant="outline" class="border-gray-950/20 text-gray-950 hover:bg-gray-950/5" href={`mailto:${siteConfig.email}`}>
+      <Icon name="mail" size="md" />
+      Email Us
+    </Button>
+  </Fragment>
+
+  <div class="relative mt-[var(--space-section-header)] flex flex-col items-center gap-3 border-t border-gray-950/10 pt-[var(--space-stack-lg)] text-sm font-medium text-gray-800 sm:flex-row sm:justify-center sm:gap-8">
+    <span class="inline-flex items-center gap-2">
+      <Icon name="mail" size="sm" />
+      {siteConfig.email}
+    </span>
+    <span class="inline-flex items-center gap-2">
+      <Icon name="globe" size="sm" />
+      murrystreetmedia.com
+    </span>
+    <span class="inline-flex items-center gap-2">
+      <Icon name="map-pin" size="sm" />
+      Murry Street Media LLC &middot; Dallas, Texas
+    </span>
+  </div>
+</CTASection>

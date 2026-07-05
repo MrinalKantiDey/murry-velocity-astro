@@ -1,0 +1,76 @@
+---
+/**
+ * Logo Component
+ *
+ * Renders the Murry Street Media lockup: the lime "M" road icon plus the
+ * wordmark. The wordmark swaps between a dark (light backgrounds) and
+ * light (dark/invert backgrounds) raster crop taken from the brand's
+ * approved logo file — replace the PNGs in src/assets/branding/ if the
+ * brand assets are ever reissued.
+ */
+import siteConfig from '@/config/site.config';
+
+import logomark from '@/assets/branding/logomark.png';
+import wordmark from '@/assets/branding/wordmark.png';
+import wordmarkDark from '@/assets/branding/wordmark-dark.png';
+
+interface Props {
+  /** Size preset (controls icon/wordmark height) */
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+  /** Force dark-background wordmark (for dark/invert backgrounds) */
+  forceDark?: boolean;
+  /** 'logomark' = icon only. 'full' = icon + wordmark lockup. */
+  variant?: 'logomark' | 'full';
+  /** Additional CSS classes (applied to the wrapping span) */
+  class?: string;
+}
+
+const {
+  size = 'md',
+  forceDark = false,
+  variant = 'logomark',
+  class: className,
+} = Astro.props;
+
+const sizeClasses: Record<string, string> = {
+  sm: 'h-6',
+  md: 'h-8',
+  lg: 'h-10',
+  xl: 'h-16',
+  '2xl': 'h-28',
+};
+
+const sizeClass = sizeClasses[size] || sizeClasses.md;
+---
+
+<span class:list={['inline-flex items-center gap-2.5', className]}>
+  <img
+    src={logomark.src}
+    alt={variant === 'logomark' ? siteConfig.branding.logo.alt : ''}
+    class:list={[sizeClass, 'w-auto shrink-0']}
+  />
+
+  {variant === 'full' && (
+    forceDark ? (
+      <img
+        src={wordmarkDark.src}
+        alt={siteConfig.branding.logo.alt}
+        class:list={[sizeClass, 'w-auto']}
+      />
+    ) : (
+      <Fragment>
+        <img
+          src={wordmark.src}
+          alt={siteConfig.branding.logo.alt}
+          class:list={[sizeClass, 'w-auto block dark:hidden']}
+        />
+        <img
+          src={wordmarkDark.src}
+          alt=""
+          class:list={[sizeClass, 'w-auto hidden dark:block']}
+          aria-hidden="true"
+        />
+      </Fragment>
+    )
+  )}
+</span>

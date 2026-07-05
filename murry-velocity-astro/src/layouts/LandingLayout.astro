@@ -1,0 +1,96 @@
+---
+/**
+ * LandingLayout
+ * Layout wrapper for landing-style pages (marketing, demo, showcase)
+ * Uses Header + Footer with landing-specific configuration
+ *
+ * This layout is part of the "demo" layer - it can be optionally installed
+ * via CLI for users who want the full landing page experience.
+ */
+import BaseLayout from './BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import siteConfig from '@/config/site.config';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  imageAlt?: string;
+  noindex?: boolean;
+  nofollow?: boolean;
+  includeOrgSchema?: boolean;
+}
+
+const {
+  title,
+  description,
+  image,
+  imageAlt,
+  noindex = false,
+  nofollow = false,
+  includeOrgSchema = false,
+} = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+  imageAlt={imageAlt}
+  noindex={noindex}
+  nofollow={nofollow}
+  includeOrgSchema={includeOrgSchema}
+>
+  <Header
+    slot="header"
+    shape="floating"
+    position="sticky"
+    size="md"
+    showCta
+    cta={{ label: 'Book a Call', href: '/contact' }}
+  />
+
+  <slot />
+
+  <Footer slot="footer" layout="columns" columns={3} background="invert" showCopyright={false}>
+    <Fragment slot="tagline">Efficient. Effective. Executed.</Fragment>
+
+    <Fragment slot="columns">
+      <div class="space-y-[var(--space-stack-md)]">
+        <h3 class="text-sm font-semibold text-on-invert">Company</h3>
+        <ul class="space-y-2">
+          <li><a href="/about" class="text-sm text-on-invert-muted transition-colors hover:text-on-invert">About</a></li>
+          <li><a href="/#track-record" class="text-sm text-on-invert-muted transition-colors hover:text-on-invert">Track Record</a></li>
+          <li><a href="/contact" class="text-sm text-on-invert-muted transition-colors hover:text-on-invert">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="space-y-[var(--space-stack-md)]">
+        <h3 class="text-sm font-semibold text-on-invert">Get in touch</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href={`mailto:${siteConfig.email}`} class="inline-flex items-center gap-2 text-sm text-on-invert-muted transition-colors hover:text-on-invert">
+              <Icon name="mail" size="xs" />
+              {siteConfig.email}
+            </a>
+          </li>
+          <li>
+            <span class="inline-flex items-center gap-2 text-sm text-on-invert-muted">
+              <Icon name="map-pin" size="xs" />
+              Dallas, Texas
+            </span>
+          </li>
+        </ul>
+      </div>
+    </Fragment>
+
+    <Fragment slot="bottom">
+      <p class="text-sm text-on-invert-muted">
+        &copy; {new Date().getFullYear()} Murry Street Media LLC. All rights reserved.
+      </p>
+      <p class="text-sm text-on-invert-muted">Dallas, Texas</p>
+    </Fragment>
+  </Footer>
+</BaseLayout>

@@ -1,0 +1,63 @@
+/* =============================================================================
+   Velocity Design Tokens - Primitive Colors
+   =============================================================================
+   Raw color scales that themes build upon.
+   Using OKLCH for perceptual color uniformity.
+   ============================================================================= */
+
+:root {
+  /* -------------------------------------------------------------------------
+     Grayscale - The foundation (OKLCH neutral scale)
+     ------------------------------------------------------------------------- */
+  --gray-0: oklch(100% 0 0);
+  --gray-50: oklch(98.3% 0 0);
+  --gray-100: oklch(96.5% 0 0);
+  --gray-200: oklch(91.3% 0 0);
+  --gray-300: oklch(85.8% 0 0);
+  --gray-400: oklch(64% 0 0);
+  --gray-500: oklch(52% 0 0);
+  --gray-600: oklch(38% 0 0);
+  --gray-700: oklch(32% 0 0);
+  --gray-800: oklch(26.7% 0 0);
+  --gray-900: oklch(19.4% 0 0);
+  --gray-950: oklch(12.3% 0 0);
+
+  /* -------------------------------------------------------------------------
+     Brand Scale - Murry Street Media "Electric Lime" (#DFE11D)
+     Base hex is the brand-guide hero color; the rest of the scale is
+     derived from it via color-mix so every step stays perceptually
+     consistent with the approved brand color.
+     ------------------------------------------------------------------------- */
+  --brand-500: #DFE11D;
+  --brand-50: color-mix(in oklch, var(--brand-500) 8%, white);
+  --brand-100: color-mix(in oklch, var(--brand-500) 18%, white);
+  --brand-200: color-mix(in oklch, var(--brand-500) 34%, white);
+  --brand-300: color-mix(in oklch, var(--brand-500) 55%, white);
+  --brand-400: color-mix(in oklch, var(--brand-500) 78%, white);
+  --brand-600: color-mix(in oklch, var(--brand-500) 88%, black);
+  --brand-700: color-mix(in oklch, var(--brand-500) 70%, black);
+  --brand-800: color-mix(in oklch, var(--brand-500) 55%, black);
+  --brand-900: color-mix(in oklch, var(--brand-500) 38%, black);
+
+  /* Obsidian - brand-guide hero neutral, used for invert/contrast sections */
+  --obsidian: #231F20;
+
+  /* Accent - Blue for links/focus */
+  --blue-500: oklch(59.5% 0.19 260);
+  --blue-600: oklch(53.2% 0.19 260);
+
+  /* Status Colors - OKLCH for consistent perception */
+  /* Base colors for icons, borders, indicators */
+  --success: oklch(72.3% 0.19 145);
+  --success-light: oklch(94% 0.05 145);
+  --success-foreground: oklch(35% 0.15 145); /* WCAG AA compliant on success-light */
+  --warning: oklch(79.5% 0.18 85);
+  --warning-light: oklch(96% 0.05 85);
+  --warning-foreground: oklch(40% 0.12 85); /* WCAG AA compliant on warning-light */
+  --error: oklch(62.8% 0.22 25);
+  --error-light: oklch(94% 0.05 25);
+  --error-foreground: oklch(40% 0.18 25); /* WCAG AA compliant on error-light */
+  --info: oklch(59.5% 0.19 260);
+  --info-light: oklch(94% 0.05 260);
+  --info-foreground: oklch(40% 0.15 260); /* WCAG AA compliant on info-light */
+}
