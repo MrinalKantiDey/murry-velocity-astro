@@ -50,7 +50,7 @@ const {
     position="sticky"
     size="md"
     showCta
-    cta={{ label: 'Book a Call', href: '/contact' }}
+    cta={{ label: 'Book a Call', href: siteConfig.bookingUrl }}
   />
 
   <slot />
@@ -62,10 +62,9 @@ const {
       <div class="space-y-[var(--space-stack-md)]">
         <h3 class="text-sm font-semibold text-on-invert">Company</h3>
         <ul class="space-y-2">
-          <li><a href="/services" class="text-sm text-on-invert-muted transition-colors hover:text-on-invert">Services</a></li>
-          <li><a href="/pricing" class="text-sm text-on-invert-muted transition-colors hover:text-on-invert">Pricing</a></li>
+          <li><a href="/" class="text-sm text-on-invert-muted transition-colors hover:text-on-invert">Home</a></li>
           <li><a href="/about" class="text-sm text-on-invert-muted transition-colors hover:text-on-invert">About</a></li>
-          <li><a href="/#track-record" class="text-sm text-on-invert-muted transition-colors hover:text-on-invert">Track Record</a></li>
+          <li><a href="/services" class="text-sm text-on-invert-muted transition-colors hover:text-on-invert">Services</a></li>
           <li><a href="/contact" class="text-sm text-on-invert-muted transition-colors hover:text-on-invert">Contact</a></li>
         </ul>
       </div>

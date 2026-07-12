@@ -10,6 +10,8 @@ export interface SiteConfig {
   author: string;
   email: string;
   phone?: string;
+  /** Direct link to the founder's booking calendar, used by all "Book a Call" CTAs */
+  bookingUrl: string;
   address?: {
     street: string;
     city: string;
@@ -59,6 +61,7 @@ const siteConfig: SiteConfig = {
   // Demo contact info - replace with your actual business details
   email: 'lacey@murrystreet.com',
   phone: '+1 (214) 555-0100',
+  bookingUrl: 'https://calendar.app.google/mshHxPb1EJCZVtSn7',
   address: {
     street: 'Dallas, TX',
     city: 'Dallas',

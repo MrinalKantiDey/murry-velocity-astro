@@ -121,7 +121,7 @@ const hasSocialSlot = Astro.slots.has('social');
 const hasBottomSlot = Astro.slots.has('bottom');
 
 // Compute footer classes
-const footerClasses = cn(footerVariants({ background }), className);
+const footerClasses = cn(footerVariants({ background }), 'relative', className);
 
 // Invert backgrounds are always dark, regardless of the site's light/dark
 // theme toggle, so the logo wordmark must always render in its light variant.
@@ -143,7 +143,11 @@ const consentEnabled = PUBLIC_CONSENT_ENABLED;
 ---
 
 <footer class={footerClasses} {...attrs}>
-  <div class="mx-auto max-w-6xl px-6">
+  {isInvertBg && (
+    <div class="street-pattern pointer-events-none absolute inset-0" aria-hidden="true" />
+  )}
+
+  <div class="relative mx-auto max-w-6xl px-6">
     {layout === 'simple' && (
       <div class="flex flex-col md:flex-row justify-between items-center gap-[var(--space-stack-lg)]">
         {/* Logo & Tagline */}
@@ -153,7 +157,7 @@ const consentEnabled = PUBLIC_CONSENT_ENABLED;
               <slot name="logo" />
             ) : (
               <a href="/" class="flex items-center" aria-label={siteConfig.name}>
-                <Logo variant="full" size="sm" forceDark={isInvertBg} loading="lazy" />
+                <Logo variant="full" size="lg" forceDark={isInvertBg} loading="lazy" />
               </a>
             )}
             {(hasTaglineSlot || tagline) && (
@@ -240,7 +244,7 @@ const consentEnabled = PUBLIC_CONSENT_ENABLED;
                 <slot name="logo" />
               ) : (
                 <a href="/" class="flex items-center" aria-label={siteConfig.name}>
-                  <Logo variant="full" size="sm" forceDark={isInvertBg} loading="lazy" />
+                  <Logo variant="full" size="lg" forceDark={isInvertBg} loading="lazy" />
                 </a>
               )}
               {(hasTaglineSlot || tagline) && (
@@ -351,7 +355,7 @@ const consentEnabled = PUBLIC_CONSENT_ENABLED;
             <slot name="logo" />
           ) : (
             <a href="/" class="flex items-center" aria-label={siteConfig.name}>
-              <Logo variant="full" size="md" forceDark={isInvertBg} loading="lazy" />
+              <Logo variant="full" size="xl" forceDark={isInvertBg} loading="lazy" />
             </a>
           )
         )}

@@ -354,15 +354,20 @@
   }
 
   /* Street pattern - Murry Street Media brand texture (repeating M/road glyph).
-     Uses a mask so the tile can be tinted with any background-color/opacity
-     utility rather than being locked to the source SVG's fill. */
+     The source SVG bakes its own near-white fill and opacity, so it's applied
+     directly as a background-image rather than as a tintable mask. */
   .street-pattern {
-    -webkit-mask-image: url('/patterns/street-pattern.svg');
-    mask-image: url('/patterns/street-pattern.svg');
-    -webkit-mask-repeat: repeat;
-    mask-repeat: repeat;
-    -webkit-mask-size: 220px auto;
-    mask-size: 220px auto;
+    background-image: url('/patterns/street-pattern.svg');
+    background-repeat: repeat;
+    background-size: 1616px auto;
+  }
+
+  /* Same texture at higher opacity (20%), for the brand/lime-green background
+     where the default 3% tile has too little contrast to read. */
+  .street-pattern-on-brand {
+    background-image: url('/patterns/street-pattern-on-brand.svg');
+    background-repeat: repeat;
+    background-size: 1616px auto;
   }
 
   /* Grid pattern - for hero sections (matches the React design) */

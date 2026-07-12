@@ -11,17 +11,18 @@ import Button from '@/components/ui/form/Button/Button.astro';
 import CTASection from '@/components/ui/marketing/CTA/CTA.astro';
 import { Hero } from '@/components/hero';
 import { services } from '@/config/services.config';
+import siteConfig from '@/config/site.config';
 
 const process = [
   {
     icon: 'phone',
-    title: 'The 30-45-Minute Alignment Call',
-    body: 'We verify your market targets, active channels, review your contract in depth, and clarify budget benchmarks to ensure a perfect strategic fit.',
+    title: 'The Alignment Call',
+    body: 'A 30-45-minute deep dive to verify your market targets, active channels, review your contract in depth, and clarify budget benchmarks to ensure a perfect strategic fit.',
   },
   {
     icon: 'layers',
     title: 'The Rigorous Onboarding Phase',
-    body: 'We execute a deep, systemized onboarding process inside our operational blueprints so your team knows exactly what is happening at every milestone — ensuring nobody is left behind.',
+    body: 'We execute a deep, systemized onboarding process inside our operational blueprints so your team knows exactly what is happening at every milestone—ensuring nobody is left behind.',
   },
   {
     icon: 'trending-up',
@@ -53,7 +54,7 @@ const process = [
       Core Media Services & Straight-Forward Pricing
     </h2>
     <p class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-foreground-muted">
-      Our pricing is fully transparent and tied directly to your monthly media budget tiers or clear flat-rate structures. We don't hide fees in complex tracking matrices — what you see is what you pay.
+      We specialize in high-touch, process-driven paid media execution. To ensure seamless campaign deployment and protect your capital integrity, each service runs through our rigorous, 17-year battle-tested blueprints.
     </p>
   </section>
 
@@ -154,17 +155,17 @@ const process = [
   {/* ================= Closing CTA ================= */}
   <CTASection variant="brand" size="lg" maxWidth="md">
     <h2 slot="heading">
-      Ready to stop funding the agency black box?
+      Ready to experience a streamlined path to growth?
     </h2>
     <p slot="description">
       Let's map out how to get you noticed.
     </p>
     <Fragment slot="actions">
-      <Button size="lg" variant="primary" class="bg-gray-950 text-white hover:bg-gray-800" href="/contact">
+      <Button size="lg" variant="primary" class="bg-gray-950 text-white hover:bg-gray-800" href={siteConfig.bookingUrl}>
         Schedule Your Alignment Call
       </Button>
-      <Button size="lg" variant="outline" class="border-gray-950/20 text-gray-950 hover:bg-gray-950/5" href="/pricing">
-        View Pricing Summary
+      <Button size="lg" variant="outline" class="border-gray-950/20 text-gray-950 hover:bg-gray-950/5" href="/about">
+        Meet Our Founder
       </Button>
     </Fragment>
   </CTASection>

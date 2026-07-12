@@ -7,7 +7,7 @@
 import BaseLayout from './BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
-import { socialProfiles } from '@/config/site.config';
+import siteConfig, { socialProfiles } from '@/config/site.config';
 
 interface Props {
   title?: string;
@@ -36,7 +36,7 @@ const { title, description, image, imageAlt, noindex, nofollow } = Astro.props;
     size="md"
     showActiveState
     showCta
-    cta={{ label: 'Book a Call', href: '/contact' }}
+    cta={{ label: 'Book a Call', href: siteConfig.bookingUrl }}
   />
 
   <main class="min-h-screen pt-16">

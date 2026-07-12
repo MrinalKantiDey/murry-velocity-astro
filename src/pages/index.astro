@@ -6,6 +6,7 @@ import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import CTA from '@/components/landing/CTA.astro';
+import siteConfig from '@/config/site.config';
 import logomark from '@/assets/branding/logomark.png';
 
 const heroStats = [
@@ -28,7 +29,7 @@ const pillars = [
   {
     icon: 'settings',
     title: 'Process-Driven, Veteran Execution',
-    body: 'Every campaign follows a rigorous, battle-tested blueprint developed over 17 years to guarantee flawless delivery.',
+    body: 'Every campaign follows a rigorous, pressure-tested blueprint developed over 17 years to guarantee flawless delivery.',
   },
   {
     icon: 'zap',
@@ -40,50 +41,57 @@ const pillars = [
 const capabilities = [
   {
     number: '01',
-    icon: 'layout',
-    title: 'Paid Media Strategy & Planning',
-    body: 'Omnichannel budget allocation, precise audience mapping, and advanced financial modeling built strictly on historical data and live market benchmarks.',
+    icon: 'users',
+    title: 'Paid Social',
+    body: 'End-to-end strategic management, optimization, and monitoring across social channels.',
   },
   {
     number: '02',
-    icon: 'trending-up',
-    title: 'Paid Media Buying & Execution',
-    body: 'Precision, systemized campaign deployment across major digital networks, including Meta, Reddit, LinkedIn and Google ad suites.',
+    icon: 'search',
+    title: 'Paid Per Click (PPC)',
+    body: 'Oversight of strategy, development, management, and continuous optimization of paid search engine marketing campaigns.',
   },
   {
     number: '03',
-    icon: 'palette',
-    title: 'Paid Media Creative Management',
-    body: 'Development and iterative optimization of high-converting visual and textual creative assets tailored to platform algorithms.',
+    icon: 'monitor',
+    title: 'Programmatic',
+    body: 'Deployment and management of real-time bidding (RTB) programmatic media campaigns across display, native, and digital video channels using advanced Demand-Side Platforms (DSPs).',
   },
   {
     number: '04',
-    icon: 'users',
-    title: 'Fractional CMO Consulting',
-    body: 'Senior executive alignment, cross-agency collaboration, marketing architecture design, and holistic growth ecosystem oversight.',
+    icon: 'map-pin',
+    title: 'OOH',
+    body: 'Strategic procurement and execution agent for Out-of-Home (OOH) media campaigns.',
+  },
+  {
+    number: '05',
+    icon: 'layers',
+    title: 'Fractional CMO',
+    body: 'Executive-level strategic oversight, senior alignment, and marketing architecture.',
   },
 ];
 
 const clientLogos = [
-  { name: 'Walmart', file: 'walmart.png' },
-  { name: 'Star Wars', file: 'star-wars.png' },
-  { name: 'Disney', file: 'disney.png' },
-  { name: 'Envoy', file: 'envoy.png' },
-  { name: 'Hatchimals', file: 'hatchimals.png' },
-  { name: 'Downtown Dallas Inc', file: 'downtown-dallas-inc.png' },
-  { name: 'Black Eyed Peas', file: 'black-eyed-peas.png' },
-  { name: 'Dallas Regional Chamber', file: 'drc.png' },
-  { name: 'EarthX', file: 'earthx.png' },
-  { name: 'P&G', file: 'pg.png' },
-  { name: "Sam's Club", file: 'sams-club.png' },
-  { name: 'UNDP', file: 'undp.png' },
+  { name: 'Client logo 1', file: 'client-1.svg' },
+  { name: 'Client logo 2', file: 'client-2.svg' },
+  { name: 'Client logo 3', file: 'client-3.svg' },
+  { name: 'Client logo 4', file: 'client-4.svg' },
+  { name: 'Client logo 5', file: 'client-5.svg' },
+  { name: 'Client logo 6', file: 'client-6.svg' },
+  { name: 'Client logo 7', file: 'client-7.svg' },
+  { name: 'Client logo 8', file: 'client-8.svg' },
+  { name: 'Client logo 9', file: 'client-9.svg' },
+  { name: 'Client logo 10', file: 'client-10.svg' },
+  { name: 'Client logo 11', file: 'client-11.svg' },
+  { name: 'Client logo 12', file: 'client-12.svg' },
+  { name: 'Client logo 13', file: 'client-13.svg' },
 ];
 
 const trackRecord = [
   {
     icon: 'users',
     channel: 'High-Conversion Paid Social',
-    context: 'Licor 43 — global paid social & domestic strategy',
+    context: 'Architected the domestic and global paid social strategy for legacy spirits brand Licor 43, generating over 400,000 documented consumer engagements and reaching 13 million+ users.',
     stats: [
       { value: '13M+', label: 'Users reached via precision digital ad placement' },
       { value: '25M', label: 'Combined organic + amplified market impressions' },
@@ -93,7 +101,7 @@ const trackRecord = [
   {
     icon: 'search',
     channel: 'Data-Driven Paid Search (PPC)',
-    context: 'Enterprise scale allocation across active ad accounts',
+    context: 'Systematically deployed and scaled over $2.5 million in active digital media spend, strategically capturing long-term Customer Lifetime Value (LTV).',
     stats: [
       { value: '$2.5M+', label: 'Active digital media spend deployed & scaled' },
       { value: 'LTV-first', label: 'Prioritized lifetime value over short-term ROAS' },
@@ -102,8 +110,8 @@ const trackRecord = [
   },
   {
     icon: 'monitor',
-    channel: 'Programmatic & Connected TV',
-    context: 'Global release strategy for a major motion picture soundtrack',
+    channel: 'Programmatic & Connected TV (CTV)',
+    context: 'Executed a global distribution strategy for a major motion picture soundtrack, securing a 97.7% Video Completion Rate (VCR) across premium, unskippable CTV placements.',
     stats: [
       { value: '1.63M+', label: 'Aggregate programmatic impressions' },
       { value: '97.7%', label: 'Video completion rate on unskippable CTV' },
@@ -113,7 +121,7 @@ const trackRecord = [
   {
     icon: 'map-pin',
     channel: 'Out-of-Home (OOH)',
-    context: 'Envoy Air / American Airlines Group — nationwide activation',
+    context: 'Designed a massive nationwide audience acquisition campaign for Envoy Air / American Airlines Group, seamlessly blanketing 30+ key U.S. markets to generate over 1 billion monthly impressions.',
     stats: [
       { value: '30+', label: 'Key U.S. markets activated' },
       { value: '55,000+', label: 'Active screens secured' },
@@ -126,12 +134,12 @@ const process = [
   {
     icon: 'phone',
     title: 'The Alignment Call',
-    body: 'A 30–45 minute deep dive to verify your market targets, review budget benchmarks, and ensure a perfect strategic fit.',
+    body: 'A 30-45-minute deep dive to verify your market targets, review budget benchmarks, and ensure a perfect strategic fit.',
   },
   {
     icon: 'layers',
     title: 'The Rigorous Onboarding Phase',
-    body: 'A deep, systemized process so your team knows exactly what is happening at every milestone — ensuring nobody is left behind.',
+    body: 'A deep, systemized process so your team knows exactly what is happening at every milestone—ensuring nobody is left behind.',
   },
   {
     icon: 'trending-up',
@@ -149,13 +157,13 @@ const process = [
   <Hero layout="split" size="lg" showPattern tone="brand" stack blobPosition="right" class="bg-brand-500">
     <span
       slot="badge"
-      class="inline-flex items-center rounded-full bg-gray-950 px-4 py-1.5 text-xs font-bold tracking-wider text-white uppercase"
+      class="inline-flex items-center rounded-full bg-gray-950 px-5 py-2 text-sm font-bold tracking-wider text-white uppercase"
     >
       Efficient. Effective. Executed.
     </span>
 
     <h1 slot="title">
-      Digital marketing engineered for <span class="text-gray-950/70">operational maturity</span>.
+      Digital marketing engineered for <span class="text-gray-950/70">operational Scalability</span>.
     </h1>
 
     <p slot="description">
@@ -163,7 +171,7 @@ const process = [
     </p>
 
     <Fragment slot="actions">
-      <Button size="lg" variant="primary" class="bg-gray-950 text-white hover:bg-gray-800" href="/contact">
+      <Button size="lg" variant="primary" class="bg-gray-950 text-white hover:bg-gray-800" href={siteConfig.bookingUrl}>
         Schedule Your Discovery Call
       </Button>
       <Button size="lg" variant="outline" class="border-gray-950/20 text-gray-950 hover:bg-gray-950/5" href="#approach">
@@ -172,7 +180,7 @@ const process = [
     </Fragment>
 
     <div slot="aside" class="relative overflow-hidden rounded-2xl bg-[var(--obsidian)] p-6 shadow-xl">
-      <div class="street-pattern pointer-events-none absolute inset-0 bg-white/[0.04]" aria-hidden="true" />
+      <div class="street-pattern pointer-events-none absolute inset-0" aria-hidden="true" />
       <div class="relative flex items-center gap-5">
         <img src={logomark.src} width={logomark.width} height={logomark.height} loading="eager" decoding="async" alt="" class="h-12 w-auto shrink-0" aria-hidden="true" />
         <p class="text-sm font-semibold leading-snug text-white">
@@ -227,7 +235,7 @@ const process = [
         </h2>
       </div>
 
-      <div class="mt-[var(--space-section-header)] grid gap-6 md:grid-cols-2">
+      <div class="mt-[var(--space-section-header)] grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {capabilities.map((cap) => (
           <div class="rounded-[var(--theme-radius-lg)] border border-border bg-card p-8">
             <div class="flex items-center gap-3">
@@ -239,6 +247,12 @@ const process = [
           </div>
         ))}
       </div>
+
+      <div class="mt-[var(--space-section-header)] text-center">
+        <Button size="lg" variant="outline" href="/services">
+          View Full Services & Pricing
+        </Button>
+      </div>
     </div>
   </section>
 
@@ -246,19 +260,19 @@ const process = [
   <section class="mx-auto max-w-6xl px-6 py-[var(--space-section)] text-center">
     <Badge pill class="mx-auto">17 Years of Media Maturity</Badge>
     <h2 class="font-display mx-auto mt-[var(--space-heading-gap)] max-w-2xl text-3xl font-bold text-balance md:text-4xl">
-      Murry Street Media is new. Our operational blueprints are nearly two decades in the making.
+      Murry Street Media is new but our operational blueprints are nearly two decades in the making.
     </h2>
     <p class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-foreground-muted">
       Our founder has directed holistic digital frameworks, grass-roots activations, and omnichannel social and programmatic media for some of the world's most recognizable organizations. We bring that exact same enterprise-level strategic rigor directly to you.
     </p>
 
     <div class="logo-marquee mt-[var(--space-section-header)] relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]">
-      <div class="logo-marquee-track flex w-max items-center gap-16">
+      <div class="logo-marquee-track flex w-max items-center gap-12 md:gap-14 lg:gap-16">
         {[...clientLogos, ...clientLogos].map((client) => (
           <img
             src={`/logos/clients/${client.file}`}
             alt={client.name}
-            class="h-8 w-auto shrink-0 opacity-60 grayscale transition-all duration-200 hover:opacity-100 hover:grayscale-0 md:h-10"
+            class="h-20 w-auto shrink-0 opacity-70 grayscale transition-all duration-200 hover:opacity-100 hover:grayscale-0 md:h-24 lg:h-28"
             loading="lazy"
           />
         ))}
@@ -283,7 +297,7 @@ const process = [
       <div class="mt-[var(--space-section-header)] grid gap-6 md:grid-cols-2">
         {trackRecord.map((row) => (
           <div class="relative overflow-hidden rounded-[var(--theme-radius-lg)] border border-border-invert bg-surface-invert-secondary p-8">
-            <div class="street-pattern pointer-events-none absolute inset-0 bg-on-invert/[0.03]" aria-hidden="true" />
+            <div class="street-pattern pointer-events-none absolute inset-0" aria-hidden="true" />
             <div class="relative flex items-center gap-3">
               <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-500 text-gray-950">
                 <Icon name={row.icon} size="sm" />
@@ -310,36 +324,12 @@ const process = [
     </div>
   </section>
 
-  {/* ================= Origin Story ================= */}
-  <section id="story" class="mx-auto max-w-4xl px-6 py-[var(--space-section)]">
-    <div class="text-center">
-      <Badge pill class="mx-auto">Our Origin Story</Badge>
-      <h2 class="font-display mt-[var(--space-heading-gap)] text-3xl font-bold text-balance md:text-4xl">
-        Building something worth looking at
-      </h2>
-    </div>
-
-    <div class="mt-[var(--space-section-header)] space-y-5 text-lg leading-relaxed text-foreground-secondary">
-      <p>
-        Every great media company needs an origin story. Ours involves a supportive family, a 10-year-old entrepreneur, and a city street sign that couldn't decide how it was spelled. One end of our founder's childhood street was spelled Murray, the other Murry; she picked the shorter one, and it stuck.
-      </p>
-      <p>
-        At age ten, Murry Street Media's first official venture was born: manufacturing custom bulletin boards. Launching that first business taught us a permanent lesson —
-      </p>
-      <blockquote class="border-l-4 border-brand-500 py-1 pl-6 text-2xl font-bold text-foreground text-balance">
-        If you want to get noticed, you have to build something worth looking at.
-      </blockquote>
-      <p>
-        Today, we've traded the craft booths for cutting-edge media strategy, but that same childhood grit, creative spark, and teamwork drives everything we do.
-      </p>
-    </div>
-  </section>
-
   {/* ================= Process ================= */}
   <section class="bg-background-secondary py-[var(--space-section)]">
     <div class="mx-auto max-w-6xl px-6">
       <div class="mx-auto max-w-3xl text-center">
-        <Badge pill class="mx-auto">A Streamlined Path to Growth</Badge>
+        <Badge pill class="mx-auto">Experience a Streamlined Path to Growth
+</Badge>
         <h2 class="font-display mt-[var(--space-heading-gap)] text-3xl font-bold text-balance md:text-4xl">
           Our structured activation process ensures a flawless launch
         </h2>

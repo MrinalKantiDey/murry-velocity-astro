@@ -12,12 +12,10 @@ export interface NavItem {
 }
 
 export const navItems: NavItem[] = [
-  { label: 'Approach', href: '/#approach', order: 1 },
-  { label: 'Services', href: '/services', order: 2 },
-  { label: 'Pricing', href: '/pricing', order: 3 },
-  { label: 'Track Record', href: '/#track-record', order: 4 },
-  { label: 'About', href: '/about', order: 5 },
-  { label: 'Contact', href: '/contact', order: 6 },
+  { label: 'Home', href: '/', order: 1 },
+  { label: 'About', href: '/about', order: 2 },
+  { label: 'Services', href: '/services', order: 3 },
+  { label: 'Contact', href: '/contact', order: 4 },
 ];
 
 /**

@@ -73,7 +73,7 @@ const gridClasses = cn(
 
   {/* Street-pattern texture overlay */}
   {showPattern && (
-    <div class="street-pattern pointer-events-none absolute inset-0 bg-gray-950/[0.06]" aria-hidden="true" />
+    <div class={cn(isBrand ? 'street-pattern-on-brand' : 'street-pattern', 'pointer-events-none absolute inset-0')} aria-hidden="true" />
   )}
 
   <div class={gridClasses}>
