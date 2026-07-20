@@ -14,7 +14,7 @@ const consentEnabled = PUBLIC_CONSENT_ENABLED;
 
 <Footer
   layout="columns"
-  columns={3}
+  columns={4}
   background="invert"
   showCopyright={false}
   socialLinks={socialProfiles}
@@ -51,6 +51,15 @@ const consentEnabled = PUBLIC_CONSENT_ENABLED;
             Dallas, Texas
           </span>
         </li>
+      </ul>
+    </div>
+
+    <div class="space-y-[var(--space-stack-md)]">
+      <h3 class="text-sm font-semibold text-on-invert">Legal</h3>
+      <ul class="space-y-2">
+        <li><a href="/privacy" class="text-sm text-on-invert-muted transition-colors hover:text-on-invert">Privacy Policy</a></li>
+        <li><a href="/terms" class="text-sm text-on-invert-muted transition-colors hover:text-on-invert">Terms & Conditions</a></li>
+        <li><a href="/cookies" class="text-sm text-on-invert-muted transition-colors hover:text-on-invert">Cookie Policy</a></li>
       </ul>
     </div>
   </Fragment>
