@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { z } from 'astro/zod';
+import { sendContactNotificationEmail, sendContactConfirmationEmail } from '@/lib/resend';
 
 export const prerender = false;
 
@@ -57,22 +58,26 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    // Process the submission
-    // In a real application, you would:
-    // - Send an email notification
-    // - Store in a database
-    // - Forward to a CRM
-    // - etc.
-
-    // For now, we just log it (in production, replace with actual handling)
-    if (import.meta.env.DEV) {
-      // eslint-disable-next-line no-console
-      console.log('Contact form submission:', {
+    // Process the submission: notify the owner(s) and confirm to the sender.
+    // Each is independent so a failure on one doesn't block the other.
+    const [ownerResult, senderResult] = await Promise.allSettled([
+      sendContactNotificationEmail({
         name: result.data.name,
         email: result.data.email,
         subject: result.data.subject,
         message: result.data.message,
-      });
+      }),
+      sendContactConfirmationEmail({
+        name: result.data.name,
+        email: result.data.email,
+      }),
+    ]);
+
+    if (ownerResult.status === 'rejected') {
+      console.error('Failed to send contact notification email:', ownerResult.reason);
+    }
+    if (senderResult.status === 'rejected') {
+      console.error('Failed to send contact confirmation email:', senderResult.reason);
     }
 
     return new Response(JSON.stringify({ success: true }), {
