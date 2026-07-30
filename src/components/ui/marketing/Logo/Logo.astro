@@ -3,16 +3,26 @@
  * Logo Component
  *
  * Renders the Murry Street Media lockup: the lime "M" road icon plus the
- * wordmark. The wordmark swaps between a dark (light backgrounds) and
- * light (dark/invert backgrounds) raster crop taken from the brand's
- * approved logo file — replace the PNGs in src/assets/branding/ if the
- * brand assets are ever reissued.
+ * "MURRY STREET MEDIA" wordmark, as inline SVG (src/components/ui/marketing/Logo/logo-paths.ts).
+ *
+ * The lime shape never changes. The icon's road-dash accent paths sit in
+ * transparent negative space (not on top of the lime fill), so on the 'full'
+ * lockup — rendered directly against the header/footer background — they
+ * follow the same dark/light color-swap as the wordmark, or they'd vanish
+ * against a dark background. On the standalone 'logomark' variant they stay
+ * fixed dark, since that's used decoratively on backgrounds the page author
+ * already chose deliberately (e.g. a white card) rather than on the
+ * theme-following header/footer background.
  */
 import siteConfig from '@/config/site.config';
-
-import logomark from '@/assets/branding/logomark.png';
-import wordmark from '@/assets/branding/wordmark.png';
-import wordmarkDark from '@/assets/branding/wordmark-dark.png';
+import { cn } from '@/lib/cn';
+import {
+  ICON_VIEWBOX,
+  ICON_BASE_PATH,
+  ICON_ACCENT_PATHS,
+  WORDMARK_VIEWBOX,
+  WORDMARK_PATHS,
+} from './logo-paths';
 
 interface Props {
   /** Size preset (controls icon/wordmark height) */
@@ -23,7 +33,7 @@ interface Props {
   variant?: 'logomark' | 'full';
   /** Additional CSS classes (applied to the wrapping span) */
   class?: string;
-  /** Native browser loading behavior — use 'lazy' when the logo renders below the fold (e.g. footer, closing CTA) */
+  /** Native browser loading behavior — kept for API compatibility; inline SVG loads with the page regardless */
   loading?: 'eager' | 'lazy';
 }
 
@@ -32,7 +42,6 @@ const {
   forceDark = false,
   variant = 'logomark',
   class: className,
-  loading = 'eager',
 } = Astro.props;
 
 const sizeClasses: Record<string, string> = {
@@ -44,52 +53,45 @@ const sizeClasses: Record<string, string> = {
 };
 
 const sizeClass = sizeClasses[size] || sizeClasses.md;
+const logoAlt = siteConfig.branding.logo.alt;
+
+const adaptiveFillClass = cn(
+  'transition-colors',
+  forceDark ? 'fill-white' : 'fill-[#231F20] dark:fill-white'
+);
+const wordmarkClass = cn('w-auto', adaptiveFillClass);
 ---
 
 <span class:list={['inline-flex items-center gap-2.5', className]}>
-  <img
-    src={logomark.src}
-    width={logomark.width}
-    height={logomark.height}
-    alt={variant === 'logomark' ? siteConfig.branding.logo.alt : ''}
-    loading={loading}
-    decoding="async"
+  <svg
+    viewBox={ICON_VIEWBOX}
     class:list={[sizeClass, 'w-auto shrink-0']}
-  />
+    role={variant === 'logomark' ? 'img' : undefined}
+    aria-label={variant === 'logomark' ? logoAlt : undefined}
+    aria-hidden={variant === 'full' ? 'true' : undefined}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d={ICON_BASE_PATH} fill="#DFE11D" />
+    {variant === 'full' ? (
+      <g class:list={[adaptiveFillClass]} fill="currentColor">
+        {ICON_ACCENT_PATHS.map((d) => <path d={d} />)}
+      </g>
+    ) : (
+      <g fill="#231F20">
+        {ICON_ACCENT_PATHS.map((d) => <path d={d} />)}
+      </g>
+    )}
+  </svg>
 
   {variant === 'full' && (
-    forceDark ? (
-      <img
-        src={wordmarkDark.src}
-        width={wordmarkDark.width}
-        height={wordmarkDark.height}
-        alt={siteConfig.branding.logo.alt}
-        loading={loading}
-        decoding="async"
-        class:list={[sizeClass, 'w-auto']}
-      />
-    ) : (
-      <Fragment>
-        <img
-          src={wordmark.src}
-          width={wordmark.width}
-          height={wordmark.height}
-          alt={siteConfig.branding.logo.alt}
-          loading={loading}
-          decoding="async"
-          class:list={[sizeClass, 'w-auto block dark:hidden']}
-        />
-        <img
-          src={wordmarkDark.src}
-          width={wordmarkDark.width}
-          height={wordmarkDark.height}
-          alt=""
-          loading={loading}
-          decoding="async"
-          class:list={[sizeClass, 'w-auto hidden dark:block']}
-          aria-hidden="true"
-        />
-      </Fragment>
-    )
+    <svg
+      viewBox={WORDMARK_VIEWBOX}
+      class:list={[sizeClass, wordmarkClass]}
+      role="img"
+      aria-label={logoAlt}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {WORDMARK_PATHS.map((d) => <path d={d} />)}
+    </svg>
   )}
 </span>
