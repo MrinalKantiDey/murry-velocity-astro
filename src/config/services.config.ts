@@ -14,7 +14,7 @@ export const services: ServiceItem[] = [
   {
     slug: 'paid-social',
     number: '01',
-    icon: 'share',
+    icon: 'share-social',
     title: 'Paid Social Media Management',
     description:
       'We turn scrollers into buyers. We build, manage, and optimize high-converting ad campaigns across Meta, TikTok, LinkedIn, and Reddit — including audience targeting, pixel tracking setup, budget pacing, writing high-converting ad copy, and on-going ad optimizations.',

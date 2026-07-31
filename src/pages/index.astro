@@ -41,7 +41,7 @@ const pillars = [
 const capabilities = [
   {
     number: '01',
-    icon: 'users',
+    icon: 'share-social',
     title: 'Paid Social',
     body: 'Turn scrollers into buyers. We build, optimize, and manage high-converting ad campaigns across Meta, TikTok, LinkedIn and Reddit to scale your customer acquisition.',
   },
@@ -237,12 +237,14 @@ const process = [
 
       <div class="mt-[var(--space-section-header)] grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {capabilities.map((cap) => (
-          <div class="rounded-[var(--theme-radius-lg)] border border-border bg-card p-8">
-            <div class="flex items-center gap-3">
-              <span class="font-display text-2xl font-bold text-brand-600">{cap.number}</span>
-              <Icon name={cap.icon} size="md" class="text-foreground-muted" />
+          <div class="group relative rounded-[var(--theme-radius-lg)] border border-border bg-card p-8 transition-colors hover:border-brand-500/40">
+            <span class="font-display pointer-events-none absolute top-6 right-7 text-4xl font-bold text-foreground-subtle/25 select-none">
+              {cap.number}
+            </span>
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-brand-500/15 text-brand-600 transition-colors group-hover:bg-brand-500 group-hover:text-gray-950">
+              <Icon name={cap.icon} size="md" />
             </div>
-            <h3 class="font-display mt-4 text-xl font-bold text-foreground">{cap.title}</h3>
+            <h3 class="font-display mt-5 text-xl font-bold text-foreground">{cap.title}</h3>
             <p class="mt-2 leading-relaxed text-foreground-muted">{cap.body}</p>
           </div>
         ))}
