@@ -28,9 +28,9 @@ const { name, headline, priceCents, currency, features, image, imageAlt, badge, 
   product.data;
 const { Content } = await render(product);
 
-// This product doesn't have a photographed cover, so it uses a live
+// These products don't have a photographed cover, so they use a live
 // on-brand cover graphic instead of a raster image (see ProductCard.astro).
-const useCoverGraphic = product.id === 'small-business-digital-starter-kit';
+const useCoverGraphic = ['small-business-digital-starter-kit', 'small-business-social-content-playbook'].includes(product.id);
 ---
 
 <PageLayout title={name} description={product.data.shortDescription}>

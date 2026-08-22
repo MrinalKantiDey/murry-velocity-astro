@@ -13,11 +13,11 @@ interface Props {
 const { product } = Astro.props;
 const { name, shortDescription, priceCents, currency, image, imageAlt, badge } = product.data;
 
-// This product doesn't have a photographed cover, so it uses a live
+// These products don't have a photographed cover, so they use a live
 // on-brand cover graphic (built from the real Logo + brand pattern) instead
 // of a raster image. Other products fall back to their `image` field, or a
 // generic icon placeholder if none is set.
-const useCoverGraphic = product.id === 'small-business-digital-starter-kit';
+const useCoverGraphic = ['small-business-digital-starter-kit', 'small-business-social-content-playbook'].includes(product.id);
 ---
 
 <Card href={`/shop/${product.id}`} hover padding="none" class="group flex flex-col overflow-hidden">

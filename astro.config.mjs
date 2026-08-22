@@ -16,7 +16,10 @@ export default defineConfig({
   // serverless function output since they're read via fs at runtime, not
   // imported, so Vercel's dependency tracer can't discover them on its own.
   adapter: vercel({
-    includeFiles: ['./private/downloads/small-business-digital-starter-kit.pdf'],
+    includeFiles: [
+      './private/downloads/small-business-digital-starter-kit.pdf',
+      './private/downloads/small-business-social-content-playbook.pdf',
+    ],
   }),
 
   env: {
